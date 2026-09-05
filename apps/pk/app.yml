@@ -1,0 +1,40 @@
+id: pk
+name: 调度主控台
+version: 0.1.0
+description: PandaNetOS 调度主控台，任务下发、节点管理、实时监控
+author: PandaNetOS
+homepage: https://github.com/PandaNetOS/pk
+icon: icon.png
+categories: [system, download]
+tags: [control-plane, scheduler]
+
+binary:
+  download_url: https://github.com/PandaNetOS/pk/releases/download/v0.1.0/pk-linux-amd64.tar.gz
+  sha256: ""
+  binary_name: pk
+  install_dir: "{{app_data}}/bin"
+
+run:
+  args: []
+  env:
+    - name: TZ
+      value: "Asia/Shanghai"
+    - name: RUST_LOG
+      value: "info"
+  port: 18080
+  working_dir: "{{app_data}}"
+  restart: unless-stopped
+
+web:
+  enabled: true
+  type: iframe
+  path: /
+
+health_check:
+  type: http
+  url: /health
+  interval: 30s
+  timeout: 5s
+  retries: 3
+
+depends_on: []

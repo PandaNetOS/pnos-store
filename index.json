@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-05T12:00:00Z",
+  "apps": [
+    {
+      "id": "pk",
+      "name": "调度主控台",
+      "version": "0.1.0",
+      "description": "PandaNetOS 调度主控台，任务下发、节点管理、实时监控",
+      "icon": "apps/pk/icon.png",
+      "categories": ["system", "download"],
+      "app_yml": "apps/pk/app.yml"
+    },
+    {
+      "id": "spde",
+      "name": "SPDE 下载节点",
+      "version": "0.1.0",
+      "description": "多协议下载执行引擎，支持 HTTP/FTP/BitTorrent",
+      "icon": "apps/spde/icon.png",
+      "categories": ["download"],
+      "app_yml": "apps/spde/app.yml"
+    },
+    {
+      "id": "pdc",
+      "name": "Peer 发现中心",
+      "version": "0.1.0",
+      "description": "BitTorrent Peer 统一发现服务，Tracker + DHT + PEX",
+      "icon": "apps/pdc/icon.png",
+      "categories": ["download", "network"],
+      "app_yml": "apps/pdc/app.yml"
+    }
+  ]
+}

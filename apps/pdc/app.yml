@@ -1,0 +1,40 @@
+id: pdc
+name: Peer 发现中心
+version: 0.1.0
+description: BitTorrent Peer 统一发现服务，支持 Tracker HTTP/UDP、DHT(Kademlia)、PEX，带缓存和健康检查
+author: PandaNetOS
+homepage: https://github.com/PandaNetOS/pdc
+icon: icon.png
+categories: [download, network]
+tags: [bittorrent, tracker, dht, pex]
+
+binary:
+  download_url: https://github.com/PandaNetOS/pdc/releases/download/v0.1.0/pdc-linux-amd64.tar.gz
+  sha256: ""
+  binary_name: pdc
+  install_dir: "{{app_data}}/bin"
+
+run:
+  args: []
+  env:
+    - name: TZ
+      value: "Asia/Shanghai"
+    - name: RUST_LOG
+      value: "info"
+  port: 18082
+  working_dir: "{{app_data}}"
+  restart: unless-stopped
+
+web:
+  enabled: true
+  type: iframe
+  path: /
+
+health_check:
+  type: http
+  url: /health
+  interval: 30s
+  timeout: 5s
+  retries: 3
+
+depends_on: []

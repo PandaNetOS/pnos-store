@@ -1,0 +1,42 @@
+id: spde
+name: SPDE 下载节点
+version: 0.1.0
+description: 多协议下载执行引擎，支持 HTTP/FTP/BitTorrent，分块调度、断点续传、多源聚合
+author: PandaNetOS
+homepage: https://github.com/PandaNetOS/spde
+icon: icon.png
+categories: [download]
+tags: [downloader, bittorrent, p2p]
+
+binary:
+  download_url: https://github.com/PandaNetOS/spde/releases/download/v0.1.0/spde-linux-amd64.tar.gz
+  sha256: ""
+  binary_name: spde
+  install_dir: "{{app_data}}/bin"
+
+run:
+  args: []
+  env:
+    - name: PK_URL
+      value: "http://127.0.0.1:18080"
+    - name: TZ
+      value: "Asia/Shanghai"
+    - name: RUST_LOG
+      value: "info"
+  port: 18081
+  working_dir: "{{app_data}}"
+  restart: unless-stopped
+
+web:
+  enabled: true
+  type: iframe
+  path: /
+
+health_check:
+  type: http
+  url: /health
+  interval: 30s
+  timeout: 5s
+  retries: 3
+
+depends_on: [pk]
