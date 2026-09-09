@@ -8,7 +8,7 @@
       "version": "0.1.0",
       "description": "PandaNetOS 智能调度主控台，任务下发、节点管理、实时监控",
       "icon": "apps/pk/icon.png",
-      "categories": ["system", "download"],
+      "categories": ["system"],
       "app_yml": "apps/pk/app.yml"
     },
     {
@@ -26,7 +26,7 @@
       "version": "0.1.0",
       "description": "BitTorrent Peer 统一发现服务，Tracker + DHT + PEX",
       "icon": "apps/pdc/icon.png",
-      "categories": ["download", "network"],
+      "categories": ["network"],
       "app_yml": "apps/pdc/app.yml"
     }
   ]
