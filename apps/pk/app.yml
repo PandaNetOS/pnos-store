@@ -1,7 +1,7 @@
 id: pk
-name: 调度主控台
+name: PK智能主控台
 version: 0.1.0
-description: PandaNetOS 调度主控台，任务下发、节点管理、实时监控
+description: PandaNetOS 智能主控台，任务下发、节点管理、实时监控
 author: PandaNetOS
 homepage: https://github.com/PandaNetOS/pk
 icon: icon.png
