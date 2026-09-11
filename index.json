@@ -1,14 +1,16 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-05T12:00:00Z",
+  "updated_at": "2026-09-11T07:08:11Z",
   "apps": [
     {
       "id": "pk",
       "name": "PK智能主控台",
-      "version": "0.1.0",
+      "version": "1.3.0",
       "description": "PandaNetOS 智能调度主控台，任务下发、节点管理、实时监控",
       "icon": "apps/pk/icon.png",
-      "categories": ["system"],
+      "categories": [
+        "system"
+      ],
       "app_yml": "apps/pk/app.yml"
     },
     {
@@ -17,7 +19,9 @@
       "version": "0.1.0",
       "description": "多协议下载执行引擎，支持 HTTP/FTP/BitTorrent",
       "icon": "apps/spde/icon.png",
-      "categories": ["download"],
+      "categories": [
+        "download"
+      ],
       "app_yml": "apps/spde/app.yml"
     },
     {
@@ -26,7 +30,9 @@
       "version": "0.1.0",
       "description": "BitTorrent Peer 统一发现服务，Tracker + DHT + PEX",
       "icon": "apps/pdc/icon.png",
-      "categories": ["network"],
+      "categories": [
+        "network"
+      ],
       "app_yml": "apps/pdc/app.yml"
     }
   ]

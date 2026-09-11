@@ -1,6 +1,6 @@
 id: pk
 name: PK智能主控台
-version: 0.1.0
+version: 1.3.0
 description: PandaNetOS 智能主控台，任务下发、节点管理、实时监控
 author: PandaNetOS
 homepage: https://github.com/PandaNetOS/pk
@@ -9,13 +9,17 @@ categories: [system, download]
 tags: [control-plane, scheduler]
 
 binary:
-  download_url: https://github.com/PandaNetOS/pk/releases/download/v0.1.0/pk-linux-amd64.tar.gz
+  # 使用 GitHub 稳定别名 releases/latest/download/<asset>：
+  # 始终指向最新正式 Release，发新版无需再修改本清单。
+  # 资产名由发版工作流固定产出（见 pnos-spec reusable-release-rust-binary.yml）。
+  download_url: https://github.com/PandaNetOS/pk/releases/latest/download/pk-linux-amd64.tar.gz
   sha256: ""
   binary_name: pk
   install_dir: "{{app_data}}/bin"
 
 run:
-  args: []
+  # pk 以子命令形式启动服务端；无参数时 clap 只打印帮助并退出
+  args: ["serve"]
   env:
     - name: TZ
       value: "Asia/Shanghai"

@@ -1,0 +1,49 @@
+name: Sync Store Versions
+
+# 应用版本号自动同步：清单里的 version 字段不再需要人工维护。
+#
+# 触发方式：
+#   - 每日定时（兜底）
+#   - repository_dispatch（应用发版工作流发来 store-sync 事件，即时同步）
+#   - 手动触发
+#
+# 数据源为各应用仓库的 GitHub latest release；全程使用本仓自带的
+# GITHUB_TOKEN，无需任何跨仓凭据。
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  repository_dispatch:
+    types: [store-sync]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-store-versions
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 同步各应用版本号（取 GitHub latest release）
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_versions.py
+
+      - name: 有变更则提交
+        run: |
+          git config user.name "pnos-bot"
+          git config user.email "pnos-bot@users.noreply.github.com"
+          if git diff --quiet --exit-code; then
+            echo "无变更，跳过提交"
+            exit 0
+          fi
+          git add -A
+          git commit -m "chore(store): 自动同步应用版本号"
+          git push
